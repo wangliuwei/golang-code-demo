@@ -70,8 +70,7 @@ func main() {
 	}
 	fmt.Printf("%d\n", pid)
 
-	var f func(*introspect.Node) string
-	f = func(node *introspect.Node) string {
+	var f = func(node *introspect.Node) string {
 		for _, i := range node.Interfaces {
 			if strings.Compare(i.Name, "org.fedoraproject.FirewallD1") != 0 {
 				continue
