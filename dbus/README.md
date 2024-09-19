@@ -3,7 +3,8 @@ Firewalld是一个基于动态区域的防火墙守护进程，自 2009 年左�
 
 Firewalld被配置为systemd D-Bus 服务。请注意下面的“Type=dbus”指令。
 
-# cat /usr/lib/systemd/system/firewalld.service
+cat /usr/lib/systemd/system/firewalld.service
+
 [Unit]
 Description=firewalld - dynamic firewall daemon
 Before=network.target
@@ -15,7 +16,7 @@ Conflicts=iptables.service ip6tables.service ebtables.service
 EnvironmentFile=-/etc/sysconfig/firewalld
 ExecStart=/usr/sbin/firewalld --nofork --nopid $FIREWALLD_ARGS
 ExecReload=/bin/kill -HUP $MAINPID
-# supress to log debug and error output also to /var/log/messages
+//# supress to log debug and error output also to /var/log/messages
 StandardOutput=null
 StandardError=null
 Type=dbus
@@ -55,7 +56,7 @@ org.fedoraproject.FirewallD1.zone.getZones
 
 查看zone内的条目信息
 
-# firewall-cmd --zone=public --list-all
+firewall-cmd --zone=public --list-all
 
 dbus-send --system --dest=org.fedoraproject.FirewallD1 --print-reply --type=method_call \
 /org/fedoraproject/FirewallD1 org.fedoraproject.FirewallD1.getZoneSettings string:"public"
