@@ -5,6 +5,7 @@ Firewalld被配置为systemd D-Bus 服务。请注意下面的“Type=dbus”指
 
 cat /usr/lib/systemd/system/firewalld.service
 
+```
 [Unit]
 Description=firewalld - dynamic firewall daemon
 Before=network.target
@@ -25,6 +26,7 @@ BusName=org.fedoraproject.FirewallD1
 [Install]
 WantedBy=basic.target
 Alias=dbus-org.fedoraproject.FirewallD1.service
+```
  
 
 知道了firewalld服务是基于D-Bus的，就可以通过D-Bus来操作防火墙。
